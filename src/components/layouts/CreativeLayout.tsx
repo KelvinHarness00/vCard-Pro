@@ -161,7 +161,7 @@ const CreativeLayout = () => {
           </div>
         )}
 
-        {/* Gallery Section */}
+        {/* Gallery Section
         {activeSection === 'gallery' && (
           <div className="h-screen bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-500 p-8 flex items-center">
             <div className="max-w-6xl mx-auto w-full">
@@ -185,7 +185,7 @@ const CreativeLayout = () => {
               </div>
             </div>
           </div>
-        )}
+        )}*/}
 
         {/* Social Section */}
         {activeSection === 'social' && (
