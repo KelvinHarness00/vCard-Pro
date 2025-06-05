@@ -194,7 +194,7 @@ const Settings = () => {
                       <Input
                         id="linkedin"
                         value={data.socialLinks.linkedin}
-                        onChange={(e) => updateData({ 
+                        onChange={(e) => updateData({
                           socialLinks: { ...data.socialLinks, linkedin: e.target.value }
                         })}
                       />
@@ -204,7 +204,7 @@ const Settings = () => {
                       <Input
                         id="youtube"
                         value={data.socialLinks.youtube}
-                        onChange={(e) => updateData({ 
+                        onChange={(e) => updateData({
                           socialLinks: { ...data.socialLinks, youtube: e.target.value }
                         })}
                       />
@@ -291,8 +291,8 @@ const Settings = () => {
                         <div
                           key={layout}
                           className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                            previewLayout === layout 
-                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-950' 
+                            previewLayout === layout
+                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-950'
                               : 'border-gray-200 hover:border-gray-300'
                           }`}
                           onClick={() => setPreviewLayout(layout as any)}

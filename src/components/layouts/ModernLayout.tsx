@@ -137,7 +137,7 @@ const ModernLayout = () => {
           </CardContent>
         </Card>
 
-        {/* Gallery Section
+        {/* Gallery Section*/}
         <Card className="mb-8 shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
           <CardContent className="p-6">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
@@ -156,7 +156,7 @@ const ModernLayout = () => {
               ))}
             </div>
           </CardContent>
-        </Card>*/}
+        </Card>
 
         {/* Harena Tech Section */}
         <Card className="mb-8 shadow-xl bg-gradient-to-r from-blue-900 to-purple-900 text-white border-0">

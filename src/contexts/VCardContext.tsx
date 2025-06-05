@@ -1,8 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import img1 from '@/assets/img1.jpeg';
 import img2 from '@/assets/img2.jpeg';
 import img3 from '@/assets/img3.jpeg';
 import img4 from '@/assets/img4.jpg';
+import perfilImg from '@/assets/perfil.png';
+import { imageToBase64 } from '@/lib/imageToBase64';
 
 export interface VCardData {
   name: string;
@@ -36,12 +38,12 @@ const defaultData: VCardData = {
   email: "kelvin.harness@harenatech.com.br",
   phone: "+55 (81) 99778-00402",
   pixKey: "(81) 99778-00402",
-  profileImage: require('@/assets/perfil.png'),
+  profileImage: perfilImg,
   galleryImages: [
-    require(img1),
-    require(img2),
-    require(img3),
-    require(img4)
+    img1,
+    img2,
+    img3,
+    img4
   ],
   socialLinks: {
     instagram: "https://instagram.com/_kelvinharness",
@@ -72,6 +74,22 @@ const VCardContext = createContext<VCardContextType | undefined>(undefined);
 
 export const VCardProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<VCardData>(getInitialData());
+
+  // Converte imagens padrão para base64 se necessário (apenas na primeira vez)
+  useEffect(() => {
+    const isBase64 = (str: string) => str.startsWith('data:image/');
+    const needsConvert = data.galleryImages.some(img => !isBase64(img));
+    if (needsConvert) {
+      Promise.all(data.galleryImages.map(img => isBase64(img) ? img : imageToBase64(img)))
+        .then(base64s => {
+          setData(prev => {
+            const updated = { ...prev, galleryImages: base64s };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+            return updated;
+          });
+        });
+    }
+  }, []);
 
   const updateData = (newData: Partial<VCardData>) => {
     setData(prev => {
