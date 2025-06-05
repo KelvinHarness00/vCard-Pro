@@ -69,7 +69,7 @@ const ModernLayout = () => {
         </div>
       )}
       {/* Header com botão de configurações */}
-      <div className="sticky top-0 z-10 backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 border-b border-white/20">
+      <div className="sticky top-0 z-10 backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 border-b border-white/20" style={{ display: 'none' }}>
         <div className="container mx-auto px-4 py-4 flex justify-end">
           <Link to="/settings">
             <Button variant="outline" size="sm" className="bg-white/50 backdrop-blur-sm">
@@ -158,11 +158,36 @@ const ModernLayout = () => {
           </CardContent>
         </Card>
 
+        {/* Harena Tech Section */}
+        <Card className="mb-8 shadow-xl bg-gradient-to-r from-blue-900 to-purple-900 text-white border-0">
+          <CardContent className="p-6 text-center">
+            <h2 className="text-2xl font-bold mb-2">Harena Tech</h2>
+            <p className="mb-4 text-base">A Harena Tech é referência em soluções digitais inovadoras, tecnologia e transformação digital para empresas e pessoas.</p>
+            <div className="flex justify-center gap-6 mb-2">
+              <a href="https://instagram.com/harenatech" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors">
+                <Instagram className="h-7 w-7" />
+              </a>
+              <a href="https://www.linkedin.com/company/harena-tech" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                <Linkedin className="h-7 w-7" />
+              </a>
+              <a href="https://youtube.com/@harenatech" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">
+                <Youtube className="h-7 w-7" />
+              </a>
+              <a href="https://harenatech.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-7 w-7">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.5M12 19.5V21M4.219 4.219l1.061 1.061M18.72 18.72l1.06 1.06M1.5 12H3m18 0h1.5M4.219 19.781l1.061-1.061M18.72 5.28l1.06-1.06M7.5 12a4.5 4.5 0 109 0 4.5 4.5 0 00-9 0z" />
+                </svg>
+              </a>
+            </div>
+            <span className="text-xs text-white/70 block">@harenatech</span>
+          </CardContent>
+        </Card>
+
         {/* Social Links */}
         <Card className="mb-8 shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0">
           <CardContent className="p-6">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
-              Redes Sociais
+              Minhas Redes Sociais
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {Object.entries(data.socialLinks).map(([platform, url]) => {
@@ -188,14 +213,14 @@ const ModernLayout = () => {
 
         {/* Pix Section */}
         <Card className="mb-8 shadow-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white border-0">
-          <CardContent className="p-6 text-center">
-            <h2 className="text-2xl font-bold mb-4">Chave Pix</h2>
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-4">
-              <p className="text-lg font-mono break-all">{data.pixKey}</p>
+          <CardContent className="p-4 text-center"> {/* padding reduzido */}
+            <h2 className="text-xl font-bold mb-2">Chave Pix</h2> {/* fonte menor */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-2 mb-2"> {/* padding reduzido */}
+              <p className="text-base font-mono break-all">{data.pixKey}</p> {/* fonte menor */}
             </div>
-            <Button 
+            <Button
               onClick={copyPixKey}
-              className="bg-white text-green-600 hover:bg-gray-100 shadow-lg"
+              className="bg-white text-green-600 hover:bg-gray-100 shadow-lg py-2 px-4 text-sm" /* botão menor */
             >
               <Copy className="h-4 w-4 mr-2" />
               Copiar Chave Pix
@@ -205,7 +230,7 @@ const ModernLayout = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <Button 
+          <Button
             onClick={downloadVCard}
             className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-xl py-6 text-lg"
           >
@@ -217,7 +242,7 @@ const ModernLayout = () => {
         {/* Footer */}
         <footer className="text-center py-8 text-gray-500 dark:text-gray-400">
           <p>&copy; 2024 {data.name}. Todos os direitos reservados.</p>
-          <p className="text-sm mt-2">Cartão de visitas digital criado com vCard Pro</p>
+          <p className="text-sm mt-2">Cartão de visitas digital criado com vCard Pro by Harena Tech</p>
         </footer>
       </div>
     </div>

@@ -176,7 +176,7 @@ const Settings = () => {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Redes Sociais</CardTitle>
+                    <CardTitle>Minhas Redes Sociais</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
@@ -184,7 +184,7 @@ const Settings = () => {
                       <Input
                         id="instagram"
                         value={data.socialLinks.instagram}
-                        onChange={(e) => updateData({ 
+                        onChange={(e) => updateData({
                           socialLinks: { ...data.socialLinks, instagram: e.target.value }
                         })}
                       />
