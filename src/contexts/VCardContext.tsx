@@ -38,10 +38,10 @@ const defaultData: VCardData = {
   pixKey: "(81) 99778-00402",
   profileImage: require('@/assets/perfil.png'),
   galleryImages: [
-    img1,
-    img2,
-    img3,
-    img4
+    require(img1),
+    require(img2),
+    require(img3),
+    require(img4)
   ],
   socialLinks: {
     instagram: "https://instagram.com/_kelvinharness",
