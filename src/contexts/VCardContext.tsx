@@ -33,7 +33,7 @@ interface VCardContextType {
 
 const defaultData: VCardData = {
   name: "Kelvin Harness",
-  profession: "CEO da Harena Techh",
+  profession: "CEO da Harena Tech",
   bio: "Transformo ideias em produtos digitais com propósito. Empreendedor, estrategista e apaixonado por construir soluções que resolvem problemas reais.",
   email: "kelvin.harness@harenatech.com.br",
   phone: "+55 (81) 99778-00402",
