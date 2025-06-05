@@ -221,6 +221,63 @@ const Settings = () => {
                     </div>
                   </CardContent>
                 </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Galeria de Imagens</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <Label>Galeria de Imagens</Label>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onChange={async (e) => {
+                          const files = Array.from(e.target.files || []);
+                          if (files.length > 0) {
+                            const base64s = await Promise.all(files.map(file => {
+                              return new Promise<string>((resolve, reject) => {
+                                const reader = new FileReader();
+                                reader.onloadend = () => resolve(reader.result as string);
+                                reader.onerror = reject;
+                                reader.readAsDataURL(file);
+                              });
+                            }));
+                            updateData({ galleryImages: [...(data.galleryImages || []), ...base64s] });
+                          }
+                        }}
+                        className="mb-2"
+                      />
+                      <div className="grid grid-cols-3 md:grid-cols-4 gap-2 mt-2">
+                        {data.galleryImages && data.galleryImages.length > 0 ? (
+                          data.galleryImages.map((img, idx) => (
+                            <div key={idx} className="relative group">
+                              <img
+                                src={img}
+                                alt={`Galeria ${idx + 1}`}
+                                className="w-full h-20 object-cover rounded border"
+                              />
+                              <button
+                                type="button"
+                                className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 text-xs opacity-80 hover:opacity-100"
+                                onClick={() => {
+                                  const newGallery = data.galleryImages.filter((_, i) => i !== idx);
+                                  updateData({ galleryImages: newGallery });
+                                }}
+                                aria-label="Remover imagem"
+                              >
+                                ×
+                              </button>
+                            </div>
+                          ))
+                        ) : (
+                          <span className="text-gray-400 col-span-3">Nenhuma imagem na galeria.</span>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
               <TabsContent value="layout">
