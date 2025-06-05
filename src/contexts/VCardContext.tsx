@@ -1,4 +1,8 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
+import img1 from '@/assets/img1.jpeg';
+import img2 from '@/assets/img2.jpeg';
+import img3 from '@/assets/img3.jpeg';
+import img4 from '@/assets/img4.jpg';
 
 export interface VCardData {
   name: string;
@@ -32,12 +36,12 @@ const defaultData: VCardData = {
   email: "kelvin.harness@harenatech.com.br",
   phone: "+55 (81) 99778-00402",
   pixKey: "(81) 99778-00402",
-  profileImage: '/src/assets/perfil.png',
+  profileImage: require('@/assets/perfil.png'),
   galleryImages: [
-    '/src/assets/img1.jpeg',
-    '/src/assets/img2.jpeg',
-    '/src/assets/img3.jpeg',
-    '/src/assets/img4.jpg'
+    img1,
+    img2,
+    img3,
+    img4
   ],
   socialLinks: {
     instagram: "https://instagram.com/_kelvinharness",
