@@ -74,12 +74,14 @@ const VCardContext = createContext<VCardContextType | undefined>(undefined);
 
 export const VCardProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<VCardData>(getInitialData());
+  const [loading, setLoading] = useState(false);
 
   // Converte imagens padrão para base64 se necessário (apenas na primeira vez)
   useEffect(() => {
     const isBase64 = (str: string) => str.startsWith('data:image/');
     const needsConvert = data.galleryImages.some(img => !isBase64(img));
     if (needsConvert) {
+      setLoading(true);
       Promise.all(data.galleryImages.map(img => isBase64(img) ? img : imageToBase64(img)))
         .then(base64s => {
           setData(prev => {
@@ -87,7 +89,8 @@ export const VCardProvider = ({ children }: { children: ReactNode }) => {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
             return updated;
           });
-        });
+        })
+        .finally(() => setLoading(false));
     }
   }, []);
 
@@ -98,6 +101,10 @@ export const VCardProvider = ({ children }: { children: ReactNode }) => {
       return updated;
     });
   };
+
+  if (loading) {
+    return <div style={{padding: 40, textAlign: 'center'}}>Carregando imagens...</div>;
+  }
 
   return (
     <VCardContext.Provider value={{ data, updateData }}>
