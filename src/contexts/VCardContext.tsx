@@ -36,8 +36,8 @@ const defaultData: VCardData = {
   profession: "CEO da Harena Tech",
   bio: "Transformo ideias em produtos digitais com propósito. Empreendedor, estrategista e apaixonado por construir soluções que resolvem problemas reais.",
   email: "kelvin.harness@harenatech.com.br",
-  phone: "+55 (81) 99778-00402",
-  pixKey: "(81) 99778-00402",
+  phone: "+55 (81) 99778-0402",
+  pixKey: "(81) 99778-0402",
   profileImage: perfilImg,
   galleryImages: [
     img1,
